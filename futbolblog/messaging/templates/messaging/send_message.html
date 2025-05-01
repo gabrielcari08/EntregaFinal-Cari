@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Enviar mensaje</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="profile-actions">
+        <button type="submit">Enviar</button>
+    </div>
+</form>
+<div class="profile-actions">
+    <a href="{% url 'inbox' %}">Volver al inbox</a>
+</div>
+{% endblock %}

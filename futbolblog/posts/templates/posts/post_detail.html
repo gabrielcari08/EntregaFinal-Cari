@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} - Mitad de Cancha{% endblock %}
+
+{% block content %}
+<div class="post-detail-container">
+    <div class="post-header">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+        <p class="post-meta">Por {{ post.author.username }} el {{ post.created_at|date:"d/m/Y" }}</p>
+    </div>
+
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="Imagen del post" class="post-image">
+    {% endif %}
+
+    <div class="post-content">
+        {{ post.content|safe }}
+    </div>
+
+    <div class="post-actions">
+        {% if user == post.author %}
+        <div class="post-author-actions">
+            <a href="{% url 'post_update' post.pk %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Borrar</a>
+        </div>
+        {% endif %}
+        
+        <a href="{% url 'post_list' %}" class="btn btn-secondary">Volver al listado</a>
+    </div>
+</div>
+{% endblock %}

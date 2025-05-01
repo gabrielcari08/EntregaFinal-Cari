@@ -1,0 +1,20 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Bienvenido - Mitad de Cancha{% endblock %}
+
+{% block content %}
+<section class="welcome-section">
+    <div class="welcome-container">
+        <div class="welcome-card">
+            <h2 class="welcome-title">Bienvenido a Mitad de Cancha</h2>
+            <p class="welcome-subtitle">Tu sitio de noticias de fútbol</p>
+            
+            <div class="welcome-actions">
+                <a href="{% url 'login' %}" class="welcome-btn welcome-btn-login">Iniciar sesión</a>
+                <span class="welcome-divider">o</span>
+                <a href="{% url 'register' %}" class="welcome-btn welcome-btn-register">Registrarse</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

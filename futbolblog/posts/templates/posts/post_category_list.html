@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts - {{ request.path|slice:"10:-1"|title }}{% endblock %}
+
+{% block content %}
+<div class="posts-inline-container">
+    <h2 class="posts-inline-title">Posts - {{ request.path|slice:"10:-1"|title }}</h2>
+
+    {% if posts %}
+        <div class="posts-inline">
+            {% for post in posts %}
+                <div class="post-inline-card">
+                    <a href="{% url 'post_detail' post.pk %}" class="post-inline-link">
+                        {% if post.image %}
+                            <div class="post-inline-image-container">
+                                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-inline-image">
+                            </div>
+                        {% endif %}
+                        <div class="post-inline-content">
+                            <h3 class="post-inline-title">{{ post.title }}</h3>
+                            <p class="post-inline-meta">por {{ post.author.username }} · {{ post.created_at|date:"d/m/Y" }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-posts-message">No hay publicaciones en esta categoría.</p>
+    {% endif %}
+</div>
+{% endblock %}

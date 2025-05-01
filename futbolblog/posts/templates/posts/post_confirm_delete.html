@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Post - Mitad de Cancha{% endblock %}
+
+{% block content %}
+<div class="delete-confirmation-container">
+    <h2 class="delete-title">Eliminar Post</h2>
+    <p class="delete-message">¿Estás seguro de que deseas eliminar el post <strong>"{{ post.title }}"</strong>? Esta acción no se puede deshacer.</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="delete-actions">
+            <button type="submit" class="btn-delete-confirm">Sí, eliminar</button>
+            <a href="{% url 'post_detail' post.pk %}" class="btn-delete-cancel">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

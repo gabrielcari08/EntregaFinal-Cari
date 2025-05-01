@@ -1,0 +1,41 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Editar Perfil - Mitad de Cancha{% endblock %}
+
+{% block content %}
+<div class="profile-form-container">
+    <h2 class="profile-form-title">Editar Perfil</h2>
+    
+    <form method="post" enctype="multipart/form-data" class="profile-edit-form">
+        {% csrf_token %}
+        
+        <div class="avatar-edit-container">
+            {% if request.user.profile.avatar %}
+                <img src="{{ request.user.profile.avatar.url }}" alt="Avatar actual" class="current-avatar">
+            {% endif %}
+        </div>
+        
+        {% for field in form %}
+        <div class="profile-form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+        </div>
+        {% endfor %}
+        
+        <div class="profile-form-actions">
+            <button type="submit" class="profile-save-btn">Guardar Cambios</button>
+            <a href="{% url 'profile' %}" class="profile-back-btn">Volver a mi perfil</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

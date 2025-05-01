@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi panel de control{% endblock %}
+
+{% block content %}
+<div class="posts-list-container">
+    <h1 class="posts-list-title">Mi panel de control</h1>
+    
+    <div class="user-info">
+        <p class="user-greeting">Publicaciones de <strong>{{ request.user.username }}</strong></p>
+    </div>
+
+    <h2 class="section-title">Títulos de tus publicaciones</h2>
+    
+    {% if user_posts %}
+        <ul class="posts-list">
+            {% for post in user_posts %}
+                <li class="post-item">
+                    <div class="post-header">
+                        <a href="{% url 'post_detail' post.pk %}" class="post-link">{{ post.title }}</a>
+                        <div class="post-actions">
+                            <a href="{% url 'post_update' post.pk %}" class="btn-edit">Editar</a>
+                            <a href="{% url 'post_delete' post.pk %}" class="btn-delete">Eliminar</a>
+                        </div>
+                    </div>
+                    <span class="post-meta">Creado el {{ post.created_at|date:"d/m/Y" }} | Última actualización: {{ post.updated_at|date:"d/m/Y" }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-posts-message">No has creado publicaciones todavía.</p>
+    {% endif %}
+    
+    <div class="dashboard-actions">
+        <a href="{% url 'post_create' %}" class="create-post-btn">Crear nueva publicación</a>
+    </div>
+</div>
+{% endblock %}
