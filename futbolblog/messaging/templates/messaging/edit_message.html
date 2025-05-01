@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Enviar mensaje</h2>
+<h2>Editar mensaje</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Enviar</button>
+    <button type="submit">Guardar cambios</button>
+    <a href="{% url 'inbox' %}">Cancelar</a>
 </form>
 {% endblock %}

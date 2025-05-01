@@ -13,6 +13,7 @@ class PostListView(LoginRequiredMixin, ListView):
     template_name = 'posts/post_list.html'
     context_object_name = 'posts'
     login_url = reverse_lazy('login')
+    ordering = ['-created_at'] 
     
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
