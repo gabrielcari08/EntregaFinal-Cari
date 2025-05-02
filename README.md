@@ -79,6 +79,8 @@ URL: http://127.0.0.1:8000
 
 12. ¡Mucha suerte probando el sitio!
 
+Video Explicativo: https://drive.google.com/file/d/1x75EkWriH3Vt8Zl4L9C_FHkzS8P2ndFV/view?usp=sharing
+
 
 
 
