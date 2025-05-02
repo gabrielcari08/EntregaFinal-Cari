@@ -33,21 +33,23 @@ git clone https://github.com/gabrielcari08/EntregaFinal-Cari.git
 python -m venv venv
 venv\Scripts\activate
 
-3. Navega a esta ruta:
+3. Importante crear la carpeta "media" dentro de futbolblog
+
+4. Navega a esta ruta:
 cd futbolblog
 
-4. Instala las dependencias.
+5. Instala las dependencias.
 pip install -r requirements.txt
 
-5. Aplica las migraciones:
+6. Aplica las migraciones:
 python manage.py makemigrations
 python manage.py migrate
 
-6. Crea un superusuario (Ingresando tu nombre, email y contraseña):
+7. Crea un superusuario (Ingresando tu nombre, email y contraseña):
 python manage.py createsuperuser
 URL: http://127.0.0.1:8000/admin/
 
-7. Inicia el servidor:
+8. Inicia el servidor:
 python manage.py runserver
 URL: http://127.0.0.1:8000
 
